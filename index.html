@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>کارکرد من</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section id="page-login">
+  <div class="login-box">
+    <h1>کارکرد من</h1>
+    <p class="subtitle">برای ورود، اطلاعات خود را وارد کنید</p>
+
+    <label for="inp-personnel">کد پرسنلی</label>
+    <input id="inp-personnel" type="text" inputmode="numeric" placeholder="1234" autocomplete="username">
+
+    <label for="inp-password">رمز عبور</label>
+    <input id="inp-password" type="password" placeholder="بار اول: کد ملی (10 رقم)" autocomplete="current-password">
+
+    <button id="btn-login" class="btn-primary">ورود</button>
+    <p id="login-error" class="error"></p>
+  </div>
+</section>
+
+<section id="page-dashboard" class="hidden">
+  <div class="layout">
+
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-dot"></div>
+        <div class="brand-text">
+          <div class="brand-title">کارکرد من</div>
+          <div class="brand-sub">پنل شخصی</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-view="attendance">
+          <span class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </span>
+          <span>حضور و غیاب</span>
+        </button>
+        <button class="nav-item" data-view="bulk">
+          <span class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+              <path d="M9 16l2 2 4-4"/>
+            </svg>
+          </span>
+          <span>ورود دستی</span>
+        </button>
+        <button class="nav-item" data-view="leave">
+          <span class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="9" y1="13" x2="15" y2="13"/>
+              <line x1="9" y1="17" x2="15" y2="17"/>
+            </svg>
+          </span>
+          <span>مرخصی</span>
+        </button>
+        <button class="nav-item" data-view="holidays">
+          <span class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </span>
+          <span>تعطیلات</span>
+        </button>
+        <button class="nav-item" data-view="reports">
+          <span class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"/>
+              <line x1="12" y1="20" x2="12" y2="4"/>
+              <line x1="6" y1="20" x2="6" y2="14"/>
+            </svg>
+          </span>
+          <span>گزارش</span>
+        </button>
+        <button class="nav-item" data-view="settings">
+          <span class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 1v6m0 10v6m11-11h-6M7 12H1m17.66-7.66l-4.24 4.24m-8.49 8.49l-4.24 4.24m17 0l-4.24-4.24M7.07 7.07L2.83 2.83"/>
+            </svg>
+          </span>
+          <span>تنظیمات</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="btn-logout" class="btn-ghost btn-block">خروج از حساب</button>
+      </div>
+    </aside>
+
+    <main class="main">
+
+      <header class="topbar">
+        <h2 id="page-title">حضور و غیاب</h2>
+        <div class="clock">
+          <span id="clock-date"></span>
+          <span id="clock-time"></span>
+        </div>
+      </header>
+
+      <div class="content">
+
+        <div id="view-attendance" class="view">
+          <div class="card">
+            <div class="card-head">
+              <h3>وضعیت امروز</h3>
+            </div>
+            <p id="today" class="muted-line">امروز: -</p>
+            <p id="status" class="status-line">خارج از محل کار</p>
+
+            <div class="actions">
+              <button id="btn-in" class="btn-primary">ورود</button>
+              <button id="btn-out" class="btn-danger">خروج</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <h3>رکوردهای امروز</h3>
+              <button id="btn-add-manual" class="btn-ghost btn-small">افزودن رکورد دستی</button>
+            </div>
+            <div id="today-sessions" class="sessions"></div>
+            <p class="total-line">مجموع امروز: <span id="today-total">۰:۰۰</span></p>
+          </div>
+
+          <div class="summary-grid">
+            <div class="summary-card">
+              <div class="summary-label">این هفته</div>
+              <div class="summary-value" id="week-total">۰:۰۰</div>
+            </div>
+            <div class="summary-card">
+              <div class="summary-label">این ماه</div>
+              <div class="summary-value" id="month-total">۰:۰۰</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="view-bulk" class="view hidden">
+
+          <div class="card">
+            <div class="card-head">
+              <h3>ثبت گروهی ورود و خروج</h3>
+            </div>
+            <p class="muted small">
+              ماه مورد نظر را انتخاب کنید، سپس برای هر روز ساعت ورود و خروج را وارد کنید.
+              اگر روزی چند بازه داشتید (مثلاً صبح و عصر)، روی «افزودن بازه» بزنید.
+              روزهای مرخصی روزانه قفل هستند.
+            </p>
+
+            <div class="bulk-controls">
+              <button type="button" id="bulk-prev" class="btn-ghost btn-small">ماه قبل</button>
+              <div id="bulk-month-title"></div>
+              <button type="button" id="bulk-next" class="btn-ghost btn-small">ماه بعد</button>
+            </div>
+
+            <div class="bulk-actions">
+              <button type="button" id="bulk-fill" class="btn-ghost btn-small">پرکردن روزهای کاری با ۸:۰۰ تا ۱۶:۴۰</button>
+              <button type="button" id="bulk-clear" class="btn-ghost btn-small">پاک کردن فرم</button>
+              <button type="button" id="bulk-save" class="btn-primary">ذخیره همه تغییرات</button>
+            </div>
+
+            <p id="bulk-msg" class="success"></p>
+            <p id="bulk-err" class="error"></p>
+          </div>
+
+          <div class="card">
+            <div class="bulk-list-head">
+              <span>تاریخ</span>
+              <span>بازه‌های حضور</span>
+              <span>عملیات</span>
+            </div>
+            <div id="bulk-list" class="bulk-list"></div>
+          </div>
+
+        </div>
+
+        <div id="view-leave" class="view hidden">
+
+          <div class="summary-grid">
+            <div class="summary-card">
+              <div class="summary-label">استفاده‌شده</div>
+              <div class="summary-value" id="leave-used">۰ روز</div>
+            </div>
+            <div class="summary-card">
+              <div class="summary-label">مانده از ۳۰ روز</div>
+              <div class="summary-value" id="leave-remaining">۳۰ روز</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <h3>ثبت مرخصی جدید</h3>
+            </div>
+
+            <div class="tabs">
+              <button class="tab active" data-tab="daily">روزانه</button>
+              <button class="tab" data-tab="hourly">ساعتی</button>
+            </div>
+
+            <div id="tab-daily" class="tab-content">
+              <div class="form-row">
+                <label>بازه تاریخ</label>
+                <button type="button" class="date-picker-btn" id="btn-pick-range">
+                  <span id="range-display">انتخاب بازه تاریخ</span>
+                </button>
+              </div>
+              <p class="muted small" id="daily-preview">برای انتخاب بازه کلیک کنید.</p>
+
+              <div class="form-row">
+                <label for="daily-note">توضیح (اختیاری)</label>
+                <input id="daily-note" type="text" placeholder="مثلاً: سفر">
+              </div>
+
+              <button id="btn-add-daily" class="btn-primary">ثبت مرخصی روزانه</button>
+              <p id="daily-error" class="error"></p>
+            </div>
+
+            <div id="tab-hourly" class="tab-content hidden">
+              <div class="form-row">
+                <label>تاریخ</label>
+                <button type="button" class="date-picker-btn" id="btn-pick-date">
+                  <span id="date-display">انتخاب تاریخ</span>
+                </button>
+              </div>
+
+              <div class="form-row two-col">
+                <div>
+                  <label>ساعت شروع</label>
+                  <div class="time-picker">
+                    <select id="hourly-start-h" class="time-select"></select>
+                    <span class="time-sep">:</span>
+                    <select id="hourly-start-m" class="time-select"></select>
+                  </div>
+                </div>
+                <div>
+                  <label>ساعت پایان</label>
+                  <div class="time-picker">
+                    <select id="hourly-end-h" class="time-select"></select>
+                    <span class="time-sep">:</span>
+                    <select id="hourly-end-m" class="time-select"></select>
+                  </div>
+                </div>
+              </div>
+
+              <p class="muted small" id="hourly-preview">مدت: —</p>
+
+              <div class="form-row">
+                <label for="hourly-note">توضیح (اختیاری)</label>
+                <input id="hourly-note" type="text" placeholder="مثلاً: کار شخصی">
+              </div>
+
+              <button id="btn-add-hourly" class="btn-primary">ثبت مرخصی ساعتی</button>
+              <p id="hourly-error" class="error"></p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <h3>رکوردهای مرخصی این سال</h3>
+            </div>
+            <div id="leave-list" class="sessions"></div>
+          </div>
+
+        </div>
+
+        <div id="view-holidays" class="view hidden">
+
+          <div class="summary-grid">
+            <div class="summary-card">
+              <div class="summary-label">تعطیلات دستی این سال</div>
+              <div class="summary-value" id="holidays-count">۰ روز</div>
+            </div>
+            <div class="summary-card">
+              <div class="summary-label">جمعه‌ها</div>
+              <div class="summary-value" style="font-size:16px">خودکار</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <h3>ثبت تعطیلی دستی</h3>
+            </div>
+            <p class="muted small">
+              جمعه‌ها همیشه تعطیل هستند و نیازی به ثبت ندارند.
+              برای پنجشنبه‌های یک‌هفته‌درمیان یا تعطیلات رسمی، عنوان بگذار و روی تاریخ در تقویم زیر کلیک کن.
+              برای حذف، روی همان روز کلیک کن.
+            </p>
+
+            <div class="form-row">
+              <label for="holiday-title">عنوان (اختیاری)</label>
+              <input id="holiday-title" type="text" placeholder="مثلاً: تعطیل رسمی">
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <h3>تقویم</h3>
+            </div>
+            <div class="calendar-head">
+              <button type="button" id="hol-cal-prev">قبلی</button>
+              <div id="hol-cal-title"></div>
+              <button type="button" id="hol-cal-next">بعدی</button>
+            </div>
+            <div class="calendar-weekdays">
+              <span>ش</span><span>ی</span><span>د</span><span>س</span><span>چ</span><span>پ</span><span>ج</span>
+            </div>
+            <div class="calendar-grid" id="hol-cal-grid"></div>
+            <p class="muted small" style="margin-top:12px">
+              روزهای زرد = امروز، قرمز = تعطیل دستی، خاکستری = جمعه
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <h3>تعطیلات دستی ثبت‌شده</h3>
+            </div>
+            <div id="holiday-list" class="sessions"></div>
+          </div>
+
+        </div>
+
+        <div id="view-reports" class="view hidden">
+
+          <div class="card rep-filter">
+            <div class="quick-filters">
+              <button type="button" class="chip" data-range="week">این هفته</button>
+              <button type="button" class="chip" data-range="month">این ماه</button>
+              <button type="button" class="chip" data-range="leaveyear">سال مرخصی</button>
+              <button type="button" class="chip active" data-range="all">همه</button>
+            </div>
+            <div class="rep-filter-row">
+              <button type="button" class="date-picker-btn rep-date-btn" id="rep-pick-from">
+                <span class="rep-date-label">از</span>
+                <span id="rep-from-display">همه</span>
+              </button>
+              <button type="button" class="date-picker-btn rep-date-btn" id="rep-pick-to">
+                <span class="rep-date-label">تا</span>
+                <span id="rep-to-display">همه</span>
+              </button>
+              <button type="button" id="rep-clear" class="btn-ghost btn-small">پاک کردن</button>
+              <div class="rep-filter-spacer"></div>
+              <button type="button" id="rep-export" class="btn-ghost btn-small">خروجی Excel</button>
+              <button type="button" id="rep-print" class="btn-ghost btn-small">چاپ</button>
+            </div>
+            <input id="rep-search" type="text" placeholder="جستجو در رکوردها…" class="rep-search-input">
+          </div>
+
+          <div class="card rep-stats">
+            <div class="rep-stats-head">
+              <div class="rep-big">
+                <div class="rep-big-value" id="rep-total">۰:۰۰</div>
+                <div class="rep-big-label">جمع کارکرد</div>
+              </div>
+              <div class="rep-minis">
+                <div class="rep-mini">
+                  <span class="rep-mini-label">روزهای کاری</span>
+                  <span class="rep-mini-value" id="rep-days">۰</span>
+                </div>
+                <div class="rep-mini">
+                  <span class="rep-mini-label">موظفی</span>
+                  <span class="rep-mini-value" id="rep-required">۰:۰۰</span>
+                </div>
+                <div class="rep-mini">
+                  <span class="rep-mini-label">میانگین روزانه</span>
+                  <span class="rep-mini-value" id="rep-avg">۰:۰۰</span>
+                </div>
+              </div>
+            </div>
+            <div class="rep-progress-wrap">
+              <div class="rep-progress-bar" id="rep-progress-bar"></div>
+            </div>
+            <div class="rep-progress-labels">
+              <span>۰٪</span>
+              <span>پیشرفت نسبت به موظفی</span>
+              <span>۱۰۰٪</span>
+            </div>
+            <p id="rep-diff" class="report-diff"></p>
+            <p id="rep-avg-week" class="avg-week-line"></p>
+          </div>
+
+          <div class="card">
+            <div class="rep-tabs">
+              <button type="button" class="rep-tab active" data-rep-tab="daily">نمودار روزانه</button>
+              <button type="button" class="rep-tab" data-rep-tab="monthly">مقایسه ماهانه</button>
+            </div>
+            <div id="rep-tab-daily" class="rep-tab-content">
+              <div id="rep-chart" class="chart"></div>
+            </div>
+            <div id="rep-tab-monthly" class="rep-tab-content hidden">
+              <div id="rep-month-chart" class="chart chart-months"></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><h3>خلاصه سال مرخصی</h3></div>
+            <div id="rep-year-summary" class="year-summary"></div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><h3>رکوردها</h3></div>
+            <div id="rep-list" class="sessions"></div>
+          </div>
+
+        </div>
+
+        <div id="view-settings" class="view hidden">
+
+          <div class="card">
+            <div class="card-head">
+              <h3>ظاهر</h3>
+            </div>
+            <p class="muted small">تم برنامه را انتخاب کنید.</p>
+            <div class="theme-toggle">
+              <button type="button" class="theme-btn active" data-theme="dark">تاریک</button>
+              <button type="button" class="theme-btn" data-theme="light">روشن</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <h3>حساب کاربری</h3>
+            </div>
+            <p class="muted-line">کد پرسنلی: <span id="settings-personnel">—</span></p>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <h3>تغییر رمز عبور</h3>
+            </div>
+
+            <div class="form-row">
+              <label for="pwd-current">رمز فعلی</label>
+              <input id="pwd-current" type="password" autocomplete="current-password">
+            </div>
+
+            <div class="form-row">
+              <label for="pwd-new">رمز جدید</label>
+              <input id="pwd-new" type="password" autocomplete="new-password">
+            </div>
+
+            <div class="form-row">
+              <label for="pwd-confirm">تکرار رمز جدید</label>
+              <input id="pwd-confirm" type="password" autocomplete="new-password">
+            </div>
+
+            <button id="btn-change-pwd" class="btn-primary">تغییر رمز</button>
+            <p id="pwd-error" class="error"></p>
+            <p id="pwd-success" class="success"></p>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <h3>پشتیبان‌گیری</h3>
+            </div>
+            <p class="muted small">
+              یک فایل پشتیبان شامل همه‌ی داده‌ها (حضور و غیاب، مرخصی، تعطیلات، حساب کاربری) دانلود کنید.
+              این فایل را در جای امن نگه دارید. برای بازیابی، همان فایل را انتخاب کنید.
+            </p>
+
+            <div class="actions">
+              <button id="btn-backup" class="btn-primary">دانلود پشتیبان</button>
+            </div>
+
+            <div class="form-row" style="margin-top:20px">
+              <label for="inp-restore">بازیابی از فایل</label>
+              <input id="inp-restore" type="file" accept="application/json,.json">
+            </div>
+
+            <p id="backup-msg" class="success"></p>
+            <p id="backup-err" class="error"></p>
+          </div>
+
+          <div class="card danger-zone">
+            <div class="card-head">
+              <h3>منطقه خطر</h3>
+            </div>
+            <p class="muted small">
+              با این کار همه‌ی رکوردها، مرخصی‌ها، تعطیلات و حساب کاربری پاک می‌شود.
+              این عمل قابل بازگشت نیست. اول پشتیبان بگیرید.
+            </p>
+            <button id="btn-clear-all" class="btn-danger">پاک کردن همه داده‌ها</button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+</section>
+
+<div id="calendar-modal" class="modal hidden">
+  <div class="modal-backdrop" id="cal-backdrop"></div>
+  <div class="calendar">
+    <div class="calendar-slots" id="cal-slots">
+      <button type="button" class="cal-slot active" id="cal-slot-from">
+        <span class="cal-slot-label">از</span>
+        <span id="cal-from-val">انتخاب</span>
+      </button>
+      <button type="button" class="cal-slot" id="cal-slot-to">
+        <span class="cal-slot-label">تا</span>
+        <span id="cal-to-val">انتخاب</span>
+      </button>
+    </div>
+
+    <div class="calendar-head">
+      <button type="button" id="cal-prev">قبلی</button>
+      <div id="cal-title"></div>
+      <button type="button" id="cal-next">بعدی</button>
+    </div>
+
+    <div class="calendar-weekdays">
+      <span>ش</span><span>ی</span><span>د</span><span>س</span><span>چ</span><span>پ</span><span>ج</span>
+    </div>
+    <div class="calendar-grid" id="cal-grid"></div>
+
+    <div class="calendar-actions">
+      <button type="button" class="btn-ghost" id="cal-cancel">انصراف</button>
+    </div>
+  </div>
+</div>
+
+<div id="session-modal" class="modal hidden">
+  <div class="modal-backdrop" id="sm-backdrop"></div>
+  <div class="modal-content">
+    <h3 id="sm-title">افزودن رکورد دستی</h3>
+
+    <div class="form-row">
+      <label>تاریخ</label>
+      <button type="button" class="date-picker-btn" id="sm-date-btn">
+        <span id="sm-date-display">انتخاب تاریخ</span>
+      </button>
+    </div>
+
+    <div class="form-row two-col">
+      <div>
+        <label>ساعت ورود</label>
+        <div class="time-picker">
+          <select id="sm-in-h" class="time-select"></select>
+          <span class="time-sep">:</span>
+          <select id="sm-in-m" class="time-select"></select>
+        </div>
+      </div>
+      <div>
+        <label>ساعت خروج</label>
+        <div class="time-picker">
+          <select id="sm-out-h" class="time-select"></select>
+          <span class="time-sep">:</span>
+          <select id="sm-out-m" class="time-select"></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <button type="button" class="btn-ghost" id="sm-cancel">انصراف</button>
+      <button type="button" class="btn-primary" id="sm-save">ذخیره</button>
+    </div>
+    <p id="sm-error" class="error"></p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
