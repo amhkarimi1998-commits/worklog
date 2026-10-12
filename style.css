@@ -2298,3 +2298,18 @@ lirection: column !important;
     width: 100% !important;
     margin: 0 !important;
   }
+
+/* ===== موبایل: نمایش دکمه خروج ===== */@media (max-width: 780px) {
+  .sidebar-footer {
+10px;
+    margin-top: 10px;
+      display: block !important;
+    padding-top:
+   border-top: 1px solid var(--border);
+  }
+
+  .sidebar-footer .btn-block {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
