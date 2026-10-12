@@ -2554,3 +2554,92 @@ button:disabled {
     opacity: 1;
   }
 }
+/* ===== ورود دستی: چیدمان درست دسکتاپ ===== */
+.bulk-list-head {
+  display: grid !important;
+  grid-template-columns: 150px 1fr 130px !important;
+  gap: 12px !important;
+  padding: 10px 16px !important;
+  font-size: 12px !important;
+  color: var(--text-dim) !important;
+  border-bottom: 1px solid var(--border) !important;
+  margin-bottom: 8px !important;
+}
+
+.bulk-list-head span:nth-child(2) {
+  text-align: right;
+}
+
+.bulk-list-head span:nth-child(3) {
+  text-align: center;
+}
+
+.bulk-row {
+  display: grid !important;
+  grid-template-columns: 150px 1fr 130px !important;
+  gap: 14px !important;
+  align-items: start !important;
+  padding: 12px 16px !important;
+  background: var(--bg-3) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 10px !important;
+}
+
+.bulk-sessions {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  min-width: 0 !important;
+}
+
+.bulk-session {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.bulk-session .time-picker {
+  flex: 0 0 auto !important;
+  padding: 4px 8px !important;
+}
+
+.bulk-session .time-select {
+  min-width: 52px !important;
+  padding: 6px 4px !important;
+  font-size: 16px !important;
+}
+
+.bulk-session-arrow {
+  color: var(--text-dim) !important;
+  font-size: 14px !important;
+  padding: 0 2px !important;
+}
+
+.bulk-session-spacer {
+  width: 30px !important;
+  flex-shrink: 0 !important;
+}
+
+.bulk-action {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 6px !important;
+}
+
+.bulk-add-btn {
+  background: transparent !important;
+  border: 1px dashed var(--border) !important;
+  color: var(--text-dim) !important;
+  padding: 8px 10px !important;
+  font-size: 12px !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+}
+
+.bulk-add-btn:hover {
+  color: var(--yellow) !important;
+  border-color: var(--yellow) !important;
+  border-style: solid !important;
+}
