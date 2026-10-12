@@ -2313,3 +2313,240 @@ lirection: column !important;
     font-size: 13px;
   }
 }
+
+/* ===== کارت حضور و غیاب: طرح Hero ===== */.att-hero {
+  padding: 24px 22px 20px;
+  text-align: center;
+:}
+
+.att-date {
+  margin: 0 0 18px;
+  font-size: 13px;
+  colo
+r var(--text-dim);
+}
+
+.att-circle-wrap {
+  display: flex;
+  justify-content: center;
+: 220px;
+  border-rad  margin: 4px 0 22px;
+}
+
+.att-circle {
+  position: relative;
+  width: 220px;
+  heigh
+tius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.4s, background 0.4s;
+e}
+
+.att-circle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid var(--bor
+dr);
+  transition: border-color 0.4s, box-shadow 0.4s;
+}
+
+.att-circle.is-active::before {
+  border-color: var(--yellow);
+  box-shadow: 0 0 0 8px rgba(250, 204, 21, 0.08),
+r, rgba(250, 204, 21, 0.10), transparent 70%);
+}              0 0 30px rgba(250, 204, 21, 0.25);
+  animation: att-pulse 2.4s ease-in-out infinite;
+}
+
+.att-circle.is-active {
+  background: radial-gradient(circle at cent
+e
+
+@keyframes att-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 8px rgba(250, 204, 21, 0.08),
+                0 0 30px rgba(250, 204, 21, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(250, 204, 21, 0.04),
+                0 0 45px rgba(250, 204, 21, 0.35);
+im)  }
+}
+
+.att-circle-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.att-circle-label {
+  font-size: 12px;
+  color: var(--text-
+d;
+  line-height: 1.4;
+  max-width: 160px;
+}
+
+.att-circle.is-active .att-circle-label {
+  color: var(--yellow);
+}
+
+.att-circle-timer {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 1px;
+  line-height: 1.1;
+m}
+
+.att-circle.is-active .att-circle-timer {
+  color: var(--yellow);
+}
+
+.att-circle-hint {
+  font-size: 11px;
+  color: var(--text-dim);
+  opacity: 0.8;
+}
+
+.att-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.att-btn {
+  flex: 1;
+ 
+ ax-width: 200px;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 12px;
+}
+
+.att-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.att-mini {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+ tabular-nums;
+}
+
+/* =  border-radius: 10px;
+  padding: 10px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+}
+
+.att-mini-label {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.att-mini-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  font-variant-numeric
+:==== تایم‌لاین روز ===== */
+.att-timeline {
+  margin-top: 4px;
+}
+
+.att-timeline-track {
+  position: relative;
+  height: 22px;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  direction: ltr;
+}
+
+.att-timeline-seg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+.7; }
+  50% { opacity: 1; }
+}
+
+.att-timeline-labels {
+  display: flex;
+    background: linear-gradient(to bottom, var(--yellow), var(--yellow-2));
+  opacity: 0.85;
+}
+
+.att-timeline-seg.is-open {
+  background: linear-gradient(to bottom, var(--yellow), var(--yellow-2));
+  opacity: 1;
+  animation: att-seg-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes att-seg-pulse {
+  0%, 100% { opacity: 
+0justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  direction: ltr;
+  padding: 0 2px;
+}
+
+.att-timeline-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+/* ===== موبایل ===== */
+@media (max-width: 780px) {
+  .att-circle {
+    width: 180px;
+    height: 180px;
+  }
+
+  .att-circle-timer {
+    font-size: 28px;
+  }
+
+  .att-circle-label {
+    font-size: 11px;
+  }
+
+  .att-btn {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .att-mini-value {
+    font-size: 13px;
+  }
+
+  .att-mini-label {
+    font-size: 10px;
+  }
+}
