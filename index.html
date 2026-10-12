@@ -1,25 +1,23 @@
-<!DOCTYPE html><html lang="fa" dir="rtl" data-theme="dark">
-wport"<head>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="dark">
+<head>
 <meta charset="utf-8">
-<meta name="vi
-e content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>کارکرد من</title>
--login">
-  <div class="login-box">
-    <<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<section id="pag
-eh1>کارکرد من</h1>
+<section id="page-login">
+  <div class="login-box">
+    <h1>کارکرد من</h1>
     <p class="subtitle">برای ورود، اطلاعات خود را وارد کنید</p>
 
     <label for="inp-personnel">کد پرسنلی</label>
-rd">رمز عبور</label>
-    <input id="inp-password" type="password" placeholder="بار اول: کد ملی (10 رقم)"     <input id="inp-personnel" type="text" inputmode="numeric" placeholder="1234" autocomplete="username">
+    <input id="inp-personnel" type="text" inputmode="numeric" placeholder="1234" autocomplete="username">
 
-    <label for="inp-passw
-oautocomplete="current-password">
+    <label for="inp-password">رمز عبور</label>
+    <input id="inp-password" type="password" placeholder="بار اول: کد ملی (10 رقم)" autocomplete="current-password">
 
     <button id="btn-login" class="btn-primary">ورود</button>
     <p id="login-error" class="error"></p>
@@ -30,7 +28,7 @@ oautocomplete="current-password">
   <div class="layout">
 
     <aside class="sidebar">
-<button class="nav-item a      <div class="brand">
+      <div class="brand">
         <div class="brand-dot"></div>
         <div class="brand-text">
           <div class="brand-title">کارکرد من</div>
@@ -39,20 +37,18 @@ oautocomplete="current-password">
       </div>
 
       <nav class="nav">
-       
- ctive" data-view="attendance">
+        <button class="nav-item active" data-view="attendance">
           <span class="nav-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"/>
-ox="0 0 24 24" fill="none" stroke="currentColor" st              <polyline points="12 6 12 12 16 14"/>
+              <polyline points="12 6 12 12 16 14"/>
             </svg>
           </span>
           <span>حضور و غیاب</span>
         </button>
         <button class="nav-item" data-view="bulk">
           <span class="nav-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" view
-Broke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
               <line x1="16" y1="2" x2="16" y2="6"/>
               <line x1="8" y1="2" x2="8" y2="6"/>
@@ -60,13 +56,12 @@ Broke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M9 16l2 2 4-4"/>
             </svg>
           </span>
- 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2          <span>ورود دستی</span>
+          <span>ورود دستی</span>
         </button>
         <button class="nav-item" data-view="leave">
           <span class="nav-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 
-0 0 0 0 2-2V8z"/>
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
               <polyline points="14 2 14 8 20 8"/>
               <line x1="9" y1="13" x2="15" y2="13"/>
               <line x1="9" y1="17" x2="15" y2="17"/>
@@ -77,10 +72,7 @@ Broke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <button class="nav-item" data-view="holidays">
           <span class="nav-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-y2="10"/>
-              <line x1="12" y1="20" x2="12" y2="4"/>
-              <line x1="6" y1="20" x2="6" y2="14"/>
-            <              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
             </svg>
           </span>
           <span>تعطیلات</span>
@@ -88,8 +80,10 @@ y2="10"/>
         <button class="nav-item" data-view="reports">
           <span class="nav-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="20" x2="18"
- /svg>
+              <line x1="18" y1="20" x2="18" y2="10"/>
+              <line x1="12" y1="20" x2="12" y2="4"/>
+              <line x1="6" y1="20" x2="6" y2="14"/>
+            </svg>
           </span>
           <span>گزارش</span>
         </button>
@@ -105,8 +99,7 @@ y2="10"/>
       </nav>
 
       <div class="sidebar-footer">
-          <div class="att-circle-label" id="status">خارج از محل کار</div>
-               <button id="btn-logout" class="btn-ghost btn-block">خروج از حساب</button>
+        <button id="btn-logout" class="btn-ghost btn-block">خروج از حساب</button>
       </div>
     </aside>
 
@@ -129,8 +122,8 @@ y2="10"/>
             <div class="att-circle-wrap">
               <div class="att-circle" id="att-circle">
                 <div class="att-circle-inner">
-       
-            <div class="att-circle-timer" id="att-timer">۰۰:۰۰:۰۰</div>
+                  <div class="att-circle-label" id="status">خارج از محل کار</div>
+                  <div class="att-circle-timer" id="att-timer">۰۰:۰۰:۰۰</div>
                   <div class="att-circle-hint" id="att-hint">آخرین وضعیت</div>
                 </div>
               </div>
@@ -148,8 +141,7 @@ y2="10"/>
               </div>
               <div class="att-mini">
                 <span class="att-mini-label">جمع امروز</span>
--manual" class="btn-ghost btn-small">افزودن رکورد دستی</button>
-                         <span class="att-mini-value" id="today-total">۰:۰۰</span>
+                <span class="att-mini-value" id="today-total">۰:۰۰</span>
               </div>
               <div class="att-mini">
                 <span class="att-mini-label">مانده تا ۸ ساعت</span>
@@ -168,8 +160,8 @@ y2="10"/>
           <div class="card">
             <div class="card-head">
               <h3>رکوردهای امروز</h3>
-              <button id="btn-ad
-d   </div>
+              <button id="btn-add-manual" class="btn-ghost btn-small">افزودن رکورد دستی</button>
+            </div>
             <div id="today-sessions" class="sessions"></div>
           </div>
 
@@ -194,8 +186,7 @@ d   </div>
             <p class="muted small">
               ماه مورد نظر را انتخاب کنید، سپس برای هر روز ساعت ورود و خروج را وارد کنید.
               اگر روزی چند بازه داشتید (مثلاً صبح و عصر)، روی «افزودن بازه» بزنید.
-s="bulk-list-head">
-              <span>تاری              روزهای مرخصی روزانه قفل هستند.
+              روزهای مرخصی روزانه قفل هستند.
             </p>
 
             <div class="bulk-controls">
@@ -215,8 +206,8 @@ s="bulk-list-head">
           </div>
 
           <div class="card">
-            <div cla
-sخ</span>
+            <div class="bulk-list-head">
+              <span>تاریخ</span>
               <span>بازه‌های حضور</span>
               <span>عملیات</span>
             </div>
@@ -246,7 +237,7 @@ sخ</span>
             <div class="tabs">
               <button class="tab active" data-tab="daily">روزانه</button>
               <button class="tab" data-tab="hourly">ساعتی</button>
-"date-picker-btn"             </div>
+            </div>
 
             <div id="tab-daily" class="tab-content">
               <div class="form-row">
@@ -269,8 +260,7 @@ sخ</span>
             <div id="tab-hourly" class="tab-content hidden">
               <div class="form-row">
                 <label>تاریخ</label>
-                <button type="button" class
-=id="btn-pick-date">
+                <button type="button" class="date-picker-btn" id="btn-pick-date">
                   <span id="date-display">انتخاب تاریخ</span>
                 </button>
               </div>
@@ -297,10 +287,7 @@ sخ</span>
               <p class="muted small" id="hourly-preview">مدت: —</p>
 
               <div class="form-row">
-           </div>
-          </div>
-
-          <div class="card">                <label for="hourly-note">توضیح (اختیاری)</label>
+                <label for="hourly-note">توضیح (اختیاری)</label>
                 <input id="hourly-note" type="text" placeholder="مثلاً: کار شخصی">
               </div>
 
@@ -328,10 +315,13 @@ sخ</span>
             <div class="summary-card">
               <div class="summary-label">جمعه‌ها</div>
               <div class="summary-value" style="font-size:16px">خودکار</div>
- 
+            </div>
+          </div>
+
+          <div class="card">
             <div class="card-head">
               <h3>ثبت تعطیلی دستی</h3>
-           <p clas            </div>
+            </div>
             <p class="muted small">
               جمعه‌ها همیشه تعطیل هستند و نیازی به ثبت ندارند.
               برای پنجشنبه‌های یک‌هفته‌درمیان یا تعطیلات رسمی، عنوان بگذار و روی تاریخ در تقویم زیر کلیک کن.
@@ -357,9 +347,8 @@ sخ</span>
               <span>ش</span><span>ی</span><span>د</span><span>س</span><span>چ</span><span>پ</span><span>ج</span>
             </div>
             <div class="calendar-grid" id="hol-cal-grid"></div>
- s="muted small" style="margin-top:12px">
-n rep-date-btn" id="rep-pick-to">
-                <span class="rep-              روزهای زرد = امروز، قرمز = تعطیل دستی، خاکستری = جمعه
+            <p class="muted small" style="margin-top:12px">
+              روزهای زرد = امروز، قرمز = تعطیل دستی، خاکستری = جمعه
             </p>
           </div>
 
@@ -386,8 +375,8 @@ n rep-date-btn" id="rep-pick-to">
                 <span class="rep-date-label">از</span>
                 <span id="rep-from-display">همه</span>
               </button>
-              <button type="button" class="date-picker-b
-tdate-label">تا</span>
+              <button type="button" class="date-picker-btn rep-date-btn" id="rep-pick-to">
+                <span class="rep-date-label">تا</span>
                 <span id="rep-to-display">همه</span>
               </button>
               <button type="button" id="rep-clear" class="btn-ghost btn-small">پاک کردن</button>
@@ -412,8 +401,7 @@ tdate-label">تا</span>
                 <div class="rep-mini">
                   <span class="rep-mini-label">موظفی</span>
                   <span class="rep-mini-value" id="rep-required">۰:۰۰</span>
-s"></div>
-                            </div>
+                </div>
                 <div class="rep-mini">
                   <span class="rep-mini-label">میانگین روزانه</span>
                   <span class="rep-mini-value" id="rep-avg">۰:۰۰</span>
@@ -441,8 +429,8 @@ s"></div>
               <div id="rep-chart" class="chart"></div>
             </div>
             <div id="rep-tab-monthly" class="rep-tab-content hidden">
-              <div id="rep-month-chart" class="chart chart-mont
-h</div>
+              <div id="rep-month-chart" class="chart chart-months"></div>
+            </div>
           </div>
 
           <div class="card">
@@ -484,8 +472,7 @@ h</div>
 
             <div class="form-row">
               <label for="pwd-current">رمز فعلی</label>
-/label>
-              <input id="inp-restore" type="file" accept="application/json,.js              <input id="pwd-current" type="password" autocomplete="current-password">
+              <input id="pwd-current" type="password" autocomplete="current-password">
             </div>
 
             <div class="form-row">
@@ -517,8 +504,8 @@ h</div>
             </div>
 
             <div class="form-row" style="margin-top:20px">
-              <label for="inp-restore">بازیابی از فایل
-<on">
+              <label for="inp-restore">بازیابی از فایل</label>
+              <input id="inp-restore" type="file" accept="application/json,.json">
             </div>
 
             <p id="backup-msg" class="success"></p>
@@ -564,9 +551,7 @@ h</div>
     </div>
 
     <div class="calendar-weekdays">
-ton type="button" class="btn-primary" id="sm-save">ذخیره</button>
-    </div>
-    <p id="sm-error" class=      <span>ش</span><span>ی</span><span>د</span><span>س</span><span>چ</span><span>پ</span><span>ج</span>
+      <span>ش</span><span>ی</span><span>د</span><span>س</span><span>چ</span><span>پ</span><span>ج</span>
     </div>
     <div class="calendar-grid" id="cal-grid"></div>
 
@@ -609,8 +594,9 @@ ton type="button" class="btn-primary" id="sm-save">ذخیره</button>
 
     <div class="modal-actions">
       <button type="button" class="btn-ghost" id="sm-cancel">انصراف</button>
-      <bu
-t"error"></p>
+      <button type="button" class="btn-primary" id="sm-save">ذخیره</button>
+    </div>
+    <p id="sm-error" class="error"></p>
   </div>
 </div>
 
