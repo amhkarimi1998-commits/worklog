@@ -1313,7 +1313,7 @@ function handleCheckOut() {
   renderReports();
 }
 
-function sessionRowHtml(s, showDate, dateStr) {
+function sessionRowHtml(s, showDate, dateStr, num) {
   const inTime = faTimeString(new Date(s.in));
   let outTime, dur, cls;
   if (s.out) {
@@ -1326,12 +1326,22 @@ function sessionRowHtml(s, showDate, dateStr) {
     cls = 'session-row open';
   }
 
-  const leftHtml = showDate
-    ? '<div class="session-main">' +
-        '<div class="session-date">' + dateStr + '</div>' +
-        '<div class="session-note">' + inTime + ' → ' + outTime + '</div>' +
-      '</div>'
-    : '<span class="times">' + inTime + ' → ' + outTime + '</span>';
+  let leftHtml;
+  if (showDate) {
+    leftHtml = '<div class="session-main">' +
+                 '<div class="session-date">' + dateStr + '</div>' +
+                 '<div class="session-note">' + inTime + ' → ' + outTime + '</div>' +
+               '</div>';
+  } else if (num) {
+    leftHtml = '<span class="session-num">' + toFaDigits(num) + '</span>' +
+               '<span class="times">' +
+                 '<span class="t-in">' + inTime + '</span>' +
+                 '<span class="t-arrow">→</span>' +
+                 '<span class="t-out">' + outTime + '</span>' +
+               '</span>';
+  } else {
+    leftHtml = '<span class="times">' + inTime + ' → ' + outTime + '</span>';
+  }
 
   const actionsHtml = s.out
     ? '<div class="session-actions">' +
@@ -1392,6 +1402,12 @@ function updateAttTimer() {
   const todays = todaySessionsFrom(list);
   const ms = todayTotalLiveMs(todays);
   attTimerEl.textContent = faDurationWithSeconds(ms);
+
+  if (todayTotalEl) todayTotalEl.textContent = faDuration(ms);
+  if (attRemainingEl) {
+    const remainingMs = Math.max(0, HOURS_PER_DAY * 3600000 - ms);
+    attRemainingEl.textContent = faDuration(remainingMs);
+  }
 }
 
 function renderAttendance() {
@@ -1430,12 +1446,12 @@ function renderAttendance() {
   } else {
     let html = '';
     for (let i = 0; i < todays.length; i++) {
-      html += sessionRowHtml(todays[i], false, '');
+      html += sessionRowHtml(todays[i], false, '', i + 1);
     }
     todaySessions.innerHTML = html;
   }
 
-  const totalMs = dayTotalMs(todays);
+  const totalMs = todayTotalLiveMs(todays);
   todayTotalEl.textContent = faDuration(totalMs);
   weekTotalEl.textContent  = faDuration(weekTotalMs(list));
   monthTotalEl.textContent = faDuration(monthTotalMs(list));
