@@ -2365,3 +2365,192 @@ button:disabled {
     margin-top: 6px;
   }
 }
+/* ===== رکوردهای امروز: طرح حرفه‌ای ===== */
+#today-sessions {
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+#today-sessions .session-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  font-size: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.15s, background 0.2s;
+}
+
+#today-sessions .session-row:hover {
+  border-color: rgba(250, 204, 21, 0.35);
+  transform: translateX(-2px);
+}
+
+#today-sessions .session-row.open {
+  border-color: rgba(250, 204, 21, 0.5);
+  background: linear-gradient(90deg, rgba(250, 204, 21, 0.08) 0%, var(--bg-3) 60%);
+}
+
+#today-sessions .session-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-dim);
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+#today-sessions .session-row.open .session-num {
+  background: var(--yellow);
+  color: #111;
+  border-color: var(--yellow);
+  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2);
+}
+
+#today-sessions .times {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+#today-sessions .times .t-in,
+#today-sessions .times .t-out {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  min-width: 64px;
+  text-align: center;
+}
+
+#today-sessions .session-row.open .times .t-out {
+  color: var(--yellow);
+  border-color: rgba(250, 204, 21, 0.35);
+}
+
+#today-sessions .times .t-arrow {
+  color: var(--yellow);
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 0.7;
+}
+
+#today-sessions .duration {
+  margin-right: auto;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--yellow);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  position: relative;
+  padding-right: 16px;
+}
+
+#today-sessions .duration::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 24px;
+  width: 1px;
+  background: var(--border);
+}
+
+#today-sessions .session-row.open .duration {
+  font-size: 13px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: rgba(250, 204, 21, 0.12);
+  font-weight: 600;
+}
+
+#today-sessions .session-row.open .duration::before {
+  display: none;
+}
+
+#today-sessions .session-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+  opacity: 0.55;
+  transition: opacity 0.2s;
+}
+
+#today-sessions .session-row:hover .session-actions {
+  opacity: 1;
+}
+
+#today-sessions .session-btn {
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 8px;
+  background: transparent;
+}
+
+#today-sessions .session-btn:hover {
+  color: var(--yellow);
+  border-color: var(--yellow);
+  background: rgba(250, 204, 21, 0.08);
+}
+
+#today-sessions .session-btn.danger:hover {
+  color: var(--danger);
+  border-color: var(--danger);
+  background: rgba(239, 68, 68, 0.08);
+}
+
+@media (max-width: 780px) {
+  #today-sessions .session-row {
+    flex-wrap: wrap;
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  #today-sessions .session-num {
+    width: 26px;
+    height: 26px;
+    font-size: 11px;
+  }
+
+  #today-sessions .times .t-in,
+  #today-sessions .times .t-out {
+    font-size: 14px;
+    min-width: 56px;
+    padding: 3px 8px;
+  }
+
+  #today-sessions .duration {
+    font-size: 16px;
+    margin-right: auto;
+    padding-right: 0;
+  }
+
+  #today-sessions .duration::before {
+    display: none;
+  }
+
+  #today-sessions .session-actions {
+    width: 100%;
+    justify-content: flex-end;
+    opacity: 1;
+  }
+}
