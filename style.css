@@ -2230,3 +2230,138 @@ button:disabled {
     display: none !important;
   }
 }
+/* ===== رکوردهای امروز: کارت‌های زیبا ===== */
+#today-sessions {
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+#today-sessions .session-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px 14px 18px;
+  background: linear-gradient(135deg, var(--bg-3) 0%, var(--bg-2) 100%);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.15s;
+}
+
+#today-sessions .session-row:hover {
+  border-color: rgba(250, 204, 21, 0.35);
+}
+
+#today-sessions .session-row::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  right: 8px;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--yellow);
+  opacity: 0.7;
+}
+
+#today-sessions .session-row.open {
+  border-color: rgba(250, 204, 21, 0.45);
+  background: linear-gradient(135deg, rgba(250, 204, 21, 0.10) 0%, var(--bg-2) 100%);
+}
+
+#today-sessions .session-row.open::before {
+  background: linear-gradient(to bottom, var(--yellow), var(--yellow-2));
+  opacity: 1;
+  animation: att-seg-pulse 2s ease-in-out infinite;
+}
+
+#today-sessions .session-row .times {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.5px;
+  padding-right: 6px;
+}
+
+#today-sessions .session-row .times::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--yellow);
+  flex-shrink: 0;
+}
+
+#today-sessions .session-row.open .times::before {
+  animation: att-dot-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes att-dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+
+#today-sessions .session-row .duration {
+  margin-right: auto;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--yellow);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.5px;
+  padding-left: 6px;
+}
+
+#today-sessions .session-row .session-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+#today-sessions .session-row .session-btn {
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 8px;
+  background: var(--bg-2);
+}
+
+#today-sessions .session-row .session-btn:hover {
+  background: var(--bg-3);
+  color: var(--yellow);
+  border-color: var(--yellow);
+}
+
+#today-sessions .session-row .session-btn.danger:hover {
+  color: var(--danger);
+  border-color: var(--danger);
+  background: var(--bg-2);
+}
+
+/* موبایل */
+@media (max-width: 780px) {
+  #today-sessions .session-row {
+    flex-wrap: wrap;
+    padding: 12px 18px 12px 14px;
+    gap: 8px;
+  }
+
+  #today-sessions .session-row .times {
+    font-size: 14px;
+  }
+
+  #today-sessions .session-row .duration {
+    font-size: 15px;
+  }
+
+  #today-sessions .session-row .session-actions {
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 6px;
+  }
+}
