@@ -1336,11 +1336,11 @@ function sessionRowHtml(s, showDate, dateStr, num) {
     leftHtml = '<span class="session-num">' + toFaDigits(num) + '</span>' +
                '<span class="times">' +
                  '<span class="t-in">' + inTime + '</span>' +
-                 '<span class="t-arrow">→</span>' +
+                 '<span class="t-arrow">←</span>' +
                  '<span class="t-out">' + outTime + '</span>' +
                '</span>';
   } else {
-    leftHtml = '<span class="times">' + inTime + ' → ' + outTime + '</span>';
+    leftHtml = '<span class="times">' + inTime + ' ← ' + outTime + '</span>';
   }
 
   const editLabel = s.out ? 'ویرایش' : 'ویرایش ورود';
