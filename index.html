@@ -116,16 +116,44 @@
       <div class="content">
 
         <div id="view-attendance" class="view">
-          <div class="card">
-            <div class="card-head">
-              <h3>وضعیت امروز</h3>
-            </div>
-            <p id="today" class="muted-line">امروز: -</p>
-            <p id="status" class="status-line">خارج از محل کار</p>
+          <div class="card att-hero">
+            <p id="today" class="att-date">امروز: -</p>
 
-            <div class="actions">
-              <button id="btn-in" class="btn-primary">ورود</button>
-              <button id="btn-out" class="btn-danger">خروج</button>
+            <div class="att-circle-wrap">
+              <div class="att-circle" id="att-circle">
+                <div class="att-circle-inner">
+                  <div class="att-circle-label" id="status">خارج از محل کار</div>
+                  <div class="att-circle-timer" id="att-timer">۰۰:۰۰:۰۰</div>
+                  <div class="att-circle-hint" id="att-hint">آماده ثبت</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="att-actions">
+              <button id="btn-in" class="btn-primary att-btn">ورود</button>
+              <button id="btn-out" class="btn-danger att-btn">خروج</button>
+            </div>
+
+            <div class="att-mini-grid">
+              <div class="att-mini">
+                <span class="att-mini-label">بازه‌های امروز</span>
+                <span class="att-mini-value" id="att-sessions-count">۰</span>
+              </div>
+              <div class="att-mini">
+                <span class="att-mini-label">جمع امروز</span>
+                <span class="att-mini-value" id="today-total">۰:۰۰</span>
+              </div>
+              <div class="att-mini">
+                <span class="att-mini-label">مانده تا ۸ ساعت</span>
+                <span class="att-mini-value" id="att-remaining">۸:۰۰</span>
+              </div>
+            </div>
+
+            <div class="att-timeline">
+              <div class="att-timeline-track" id="att-timeline-track"></div>
+              <div class="att-timeline-labels">
+                <span>۰۰</span><span>۰۶</span><span>۱۲</span><span>۱۸</span><span>۲۴</span>
+              </div>
             </div>
           </div>
 
@@ -135,7 +163,6 @@
               <button id="btn-add-manual" class="btn-ghost btn-small">افزودن رکورد دستی</button>
             </div>
             <div id="today-sessions" class="sessions"></div>
-            <p class="total-line">مجموع امروز: <span id="today-total">۰:۰۰</span></p>
           </div>
 
           <div class="summary-grid">
