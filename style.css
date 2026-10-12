@@ -2201,3 +2201,100 @@ a.calendar-head button {
     flex: 1;
   }
 }
+
+/* ===== اصلاح ورود دستی در موبایل ===== */@media (max-width: 780px) {
+
+  .bulk-row {
+    display: flex !important;
+mportant;
+    gap: 10px !important;
+      flex-direction: column !important;
+    grid-template-columns: none !
+i  padding: 10px !important;
+  }
+
+  .bulk-date {
+    width: 100% !important;
+    order: 1 !important;
+  }
+
+  .bulk-sessions {
+    gap: 8px !important;
+      width: 100% !important;
+    min-width: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+  order: 2 !important;
+  }
+
+important;
+    ga  .bulk-session {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between 
+!p: 4px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .bulk-session .time-picker {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    padding: 4px !important;
+0 a  }
+
+  .bulk-session .time-select {
+    min-width: 0 !important;
+    width: 100% !important;
+    padding: 6px 1px !important;
+    font-size: 15px !important;
+  }
+
+  .bulk-session-arrow {
+    flex: 0
+ uto !important;
+    font-size: 12px !important;
+    padding: 0 2px !important;
+  }
+
+  .bulk-session .bulk-clear-btn {
+    flex: 0 0 26px !important;
+    width: 26px !important;
+    height: 26px !important;
+ay: flex !important;
+    flex-d    font-size: 14px !important;
+    padding: 0 !important;
+  }
+
+  .bulk-session-spacer {
+    flex: 0 0 26px !important;
+    width: 26px !important;
+  }
+
+  .bulk-action {
+    width: 100% !important;
+    disp
+lirection: column !important;
+    align-items: stretch !important;
+    order: 3 !important;
+  }
+
+  .bulk-add-btn {
+    width: 100% !important;
+    text-align: center !important;
+    font-size: 12px !important;
+    padding: 6px !important;
+}  }
+
+  .bulk-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+
+  .bulk-actions .btn-primary,
+  .bulk-actions .btn-ghost {
+    width: 100% !important;
+    margin: 0 !important;
+  }
