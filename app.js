@@ -1,16 +1,17 @@
-const KEY_USER = 'worklog:user';
-const KEY_SESSION = 'worklog:session';
-const KEY_ATTEND = 'worklog:attendance';
+const KEY_USER = 'worklog:user';const KEY_SESSION = 'worklog:session';
+;
 const KEY_LEAVE = 'worklog:leave';
-const KEY_HOLIDAYS = 'worklog:holidays';
+conconst KEY_ATTEND = 'worklog:attendance
+'st KEY_HOLIDAYS = 'worklog:holidays';
 const KEY_THEME = 'worklog:theme';
 const DAILY_BREAK_MIN = 40;
-const LEAVE_YEAR_TOTAL_HOURS = 240;
+LES = {
+  attendance: 'حضور و غیاب'const LEAVE_YEAR_TOTAL_HOURS = 240;
 const HOURS_PER_DAY = 8;
 const BACKUP_VERSION = 1;
 
-const PAGE_TITLES = {
-  attendance: 'حضور و غیاب',
+const PAGE_TI
+T,
   bulk: 'ورود دستی',
   leave: 'مرخصی',
   holidays: 'تعطیلات',
@@ -20,25 +21,15 @@ const PAGE_TITLES = {
 
 const PERSIAN_MONTHS = [
   'فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور',
-  'مهر','آبان','آذر','دی','بهمن','اسفند'
+ey) {
+  const v = localStorage.getItem(k  'مهر','آبان','آذر','دی','بهمن','اسفند'
 ];
 
 function $(id) { return document.getElementById(id); }
 function save(key, val) { localStorage.setItem(key, JSON.stringify(val)); }
-function load(key) {
-  const v = localStorage.getItem(key);
+function load(
+key);
   return v ? JSON.parse(v) : null;
-}
-
-async function sha256(text) {
-  const buf = new TextEncoder().encode(text);
-  const hash = await crypto.subtle.digest('SHA-256', buf);
-  const bytes = new Uint8Array(hash);
-  let hex = '';
-  for (let i = 0; i < bytes.length; i++) {
-    hex += bytes[i].toString(16).padStart(2, '0');
-  }
-  return hex;
 }
 
 function toFaDigits(s) {
@@ -56,7 +47,8 @@ function setTheme(theme) {
   save(KEY_THEME, theme);
   applyTheme(theme);
   document.querySelectorAll('.theme-btn').forEach(function (b) {
-    b.classList.toggle('active', b.dataset.theme === theme);
+    b.classList.tog
+gle('active', b.dataset.theme === theme);
   });
 }
 
@@ -65,7 +57,7 @@ function initTheme() {
   applyTheme(saved);
   document.querySelectorAll('.theme-btn').forEach(function (b) {
     b.classList.toggle('active', b.dataset.theme === saved);
-  });
+ab-co  });
 }
 
 document.querySelectorAll('.rep-tab').forEach(function (btn) {
@@ -73,7 +65,8 @@ document.querySelectorAll('.rep-tab').forEach(function (btn) {
     document.querySelectorAll('.rep-tab').forEach(function (b) {
       b.classList.remove('active');
     });
-    document.querySelectorAll('.rep-tab-content').forEach(function (c) {
+    document.querySelectorAll('.rep-
+tntent').forEach(function (c) {
       c.classList.add('hidden');
     });
     btn.classList.add('active');
@@ -84,7 +77,7 @@ document.querySelectorAll('.rep-tab').forEach(function (btn) {
 
 function localDateKey(d) {
   return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
-}
+b}
 
 function parseLocalDateKey(key) {
   const parts = key.split('-');
@@ -100,7 +93,8 @@ function escapeHtml(s) {
 }
 
 function jdiv(a, b) { return ~~(a / b); }
-function jmod(a, b) { return a - jdiv(a, b) * b; }
+function jmod(a,
+ ) { return a - jdiv(a, b) * b; }
 
 function jalCal(jy) {
   const breaks = [-61, 9, 38, 199, 426, 686, 756, 818, 1111, 1181, 1210, 1635, 2060, 2097, 2192, 2262, 2324, 2394, 2456, 3178];
@@ -110,7 +104,8 @@ function jalCal(jy) {
   let jp = breaks[0];
   let jm, jump, leap, leapG, march, n, i;
   if (jy < jp || jy >= breaks[bl - 1]) throw new Error('Invalid Jalaali year ' + jy);
-  for (i = 1; i < bl; i += 1) {
+G;
+  if (jump - n < 6) n = n -   for (i = 1; i < bl; i += 1) {
     jm = breaks[i];
     jump = jm - jp;
     if (jy < jm) break;
@@ -121,8 +116,8 @@ function jalCal(jy) {
   leapJ = leapJ + jdiv(n, 33) * 8 + jdiv(jmod(n, 33) + 3, 4);
   if (jmod(jump, 33) === 4 && jump - n === 4) leapJ += 1;
   leapG = jdiv(gy, 4) - jdiv((jdiv(gy, 100) + 1) * 3, 4) - 150;
-  march = 20 + leapJ - leapG;
-  if (jump - n < 6) n = n - jump + jdiv(jump + 4, 33) * 33;
+  march = 20 + leapJ - lea
+pjump + jdiv(jump + 4, 33) * 33;
   leap = jmod(jmod(n + 1, 33) - 1, 4);
   if (leap === -1) leap = 4;
   return { leap: leap, gy: gy, march: march };
@@ -137,7 +132,10 @@ function g2d(gy, gm, gd) {
 function d2g(jdn) {
   let j = 4 * jdn + 139361631;
   j = j + jdiv(jdiv(4 * jdn + 183187720, 146097) * 3, 4) * 4 - 3908;
-  const i = jdiv(jmod(j, 1461), 4) * 5 + 308;
+m, k;
+  k = jdn - jdn1f;
+  if (k >= 0) {
+      const i = jdiv(jmod(j, 1461), 4) * 5 + 308;
   const gd = jdiv(jmod(i, 153), 5) + 1;
   const gm = jmod(jdiv(i, 153), 12) + 1;
   const gy = jdiv(j, 1461) - 100100 + jdiv(8 - gm, 6);
@@ -154,10 +152,8 @@ function d2j(jdn) {
   let jy = gy - 621;
   const r = jalCal(jy);
   const jdn1f = g2d(gy, 3, r.march);
-  let jd, jm, k;
-  k = jdn - jdn1f;
-  if (k >= 0) {
-    if (k <= 185) {
+  let jd, 
+jif (k <= 185) {
       jm = 1 + jdiv(k, 31);
       jd = jmod(k, 31) + 1;
       return { jy: jy, jm: jm, jd: jd };
@@ -203,7 +199,8 @@ function faDateString(d) {
 function faWeekday(d) {
   const jsDay = d.getDay();
   const persianDayIdx = (jsDay + 1) % 7;
-  const weekdays = ['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه'];
+  const weekdays = ['شنبه'
+,'یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه'];
   return weekdays[persianDayIdx];
 }
 
@@ -223,7 +220,7 @@ function faTimeString(d) {
 
 function faTimeWithSeconds(d) {
   return toFaDigits(pad2(d.getHours()) + ':' + pad2(d.getMinutes()) + ':' + pad2(d.getSeconds()));
-}
+o}
 
 function faDuration(ms) {
   if (ms < 0) ms = 0;
@@ -233,9 +230,19 @@ function faDuration(ms) {
   return toFaDigits(h) + ':' + toFaDigits(pad2(m));
 }
 
+function faDurationWithSeconds(ms) {
+  if (ms < 0) ms = 0;
+  const totalSec = Math.floor(ms / 1000);
+  const h = Math.floor(totalSec / 3600);
+  const m = Math.floor((totalSec % 3600) / 60);
+  const s = totalSec % 60;
+  return toFaDigits(pad2(h) + ':' + pad2(m) + ':' + pad2(s));
+}
+
 function formatHoursAsDays(hours) {
   if (hours === 0) return '۰ روز';
-  const wholeDays = Math.floor(hours / HOURS_PER_DAY);
+  const wholeDays = Math.fl
+or(hours / HOURS_PER_DAY);
   const remHours = Math.round((hours - wholeDays * HOURS_PER_DAY) * 100) / 100;
   if (remHours === 0) return toFaDigits(wholeDays) + ' روز';
   if (wholeDays === 0) return toFaDigits(remHours) + ' ساعت';
@@ -254,7 +261,7 @@ function startOfPersianWeek(d) {
 function faYearMonthKey(d) {
   const j = dateToJalaali(d);
   return j.jy + '-' + j.jm;
-}
+ }
 
 function currentLeaveYear() {
   const today = new Date();
@@ -274,8 +281,8 @@ function isInLeaveYear(date) {
 }
 
 function getLeaveYearMonths() {
-  const r = currentLeaveYear();
-  const months = [];
+ const r = currentLeaveYear();
+localDateKey(new Dat  const months = [];
   for (let i = 0; i < 12; i++) {
     let jm = r.startJM + i;
     let jy = r.startJY;
@@ -301,7 +308,8 @@ function holidayForDate(date) {
   const key = localDateKey(date);
   const list = getHolidays();
   for (let i = 0; i < list.length; i++) {
-    if (localDateKey(new Date(list[i].date)) === key) return list[i];
+    if 
+(e(list[i].date)) === key) return list[i];
   }
   return null;
 }
@@ -332,8 +340,26 @@ function dayTotalMs(sessions) {
       ms += new Date(s.out) - new Date(s.in);
       hasClosed = true;
     }
-  }
+in)  }
   if (hasClosed) ms -= DAILY_BREAK_MIN * 60000;
+  if (ms < 0) ms = 0;
+  return ms;
+}
+
+function todayTotalLiveMs(sessions) {
+  let ms = 0;
+  let anySession = false;
+  for (let i = 0; i < sessions.length; i++) {
+    const s = sessions[i];
+    if (s.out) {
+      ms += new Date(s.out) - new Date(s.in);
+      anySession = true;
+    } else {
+      ms += new Date() - new Date(s.in);
+      anySession = true;
+    }
+  }
+  if (anySession) ms -= DAILY_BREAK_MIN * 60000;
   if (ms < 0) ms = 0;
   return ms;
 }
@@ -341,7 +367,8 @@ function dayTotalMs(sessions) {
 function groupByLocalDay(sessions) {
   const map = {};
   for (let i = 0; i < sessions.length; i++) {
-    const key = localDateKey(new Date(sessions[i].in));
+    const key = localDateKey(new Date(sessions[i]
+.);
     if (!map[key]) map[key] = [];
     map[key].push(sessions[i]);
   }
@@ -366,7 +393,7 @@ function monthTotalMs(list) {
   for (const key in days) {
     const dayDate = parseLocalDateKey(key);
     if (faYearMonthKey(dayDate) === currentKey) total += dayTotalMs(days[key]);
-  }
+mon  }
   return total;
 }
 
@@ -386,9 +413,17 @@ const btnOut        = $('btn-out');
 const todaySessions = $('today-sessions');
 const todayTotalEl  = $('today-total');
 const weekTotalEl   = $('week-total');
-const monthTotalEl  = $('month-total');
+const monthTotalEl  = $(
+'th-total');
 const pageTitleEl   = $('page-title');
 const btnAddManual  = $('btn-add-manual');
+
+const attCircleEl        = $('att-circle');
+const attTimerEl         = $('att-timer');
+const attHintEl          = $('att-hint');
+const attSessionsCountEl = $('att-sessions-count');
+const attRemainingEl     = $('att-remaining');
+const attTimelineTrackEl = $('att-timeline-track');
 
 const leaveUsedEl    = $('leave-used');
 const leaveRemEl     = $('leave-remaining');
@@ -399,7 +434,8 @@ const rangeDisplay   = $('range-display');
 const dailyPreview   = $('daily-preview');
 const dailyNoteInp   = $('daily-note');
 const btnAddDaily    = $('btn-add-daily');
-const dailyError     = $('daily-error');
+ckupErr   = $('backup-err');
+const btnClconst dailyError     = $('daily-error');
 
 const btnPickDate    = $('btn-pick-date');
 const dateDisplay    = $('date-display');
@@ -419,8 +455,8 @@ const pwdSuccess     = $('pwd-success');
 const btnBackup   = $('btn-backup');
 const inpRestore  = $('inp-restore');
 const backupMsg   = $('backup-msg');
-const backupErr   = $('backup-err');
-const btnClearAll = $('btn-clear-all');
+const b
+aearAll = $('btn-clear-all');
 
 const holidaysCountEl = $('holidays-count');
 const holidayTitleInp = $('holiday-title');
@@ -440,7 +476,8 @@ const repExportBtn    = $('rep-export');
 const repPrintBtn     = $('rep-print');
 const repProgressBar  = $('rep-progress-bar');
 const repTotalEl      = $('rep-total');
-const repDaysEl       = $('rep-days');
+lots    = $('cal-slots');
+const calSloconst repDaysEl       = $('rep-days');
 const repRequiredEl   = $('rep-required');
 const repAvgEl        = $('rep-avg');
 const repDiffEl       = $('rep-diff');
@@ -461,8 +498,8 @@ const smSave      = $('sm-save');
 
 const calModal    = $('calendar-modal');
 const calBackdrop = $('cal-backdrop');
-const calSlots    = $('cal-slots');
-const calSlotFrom = $('cal-slot-from');
+const cal
+StFrom = $('cal-slot-from');
 const calSlotTo   = $('cal-slot-to');
 const calFromVal  = $('cal-from-val');
 const calToVal    = $('cal-to-val');
@@ -492,7 +529,9 @@ function getTimePicker(prefix) {
 }
 
 function initTimePickers() {
-  fillTimeOptions($('hourly-start-h'), 24);
+
+
+const smState = { mode: 'add', editingId:  fillTimeOptions($('hourly-start-h'), 24);
   fillTimeOptions($('hourly-end-h'), 24);
   fillTimeOptions($('hourly-start-m'), 60);
   fillTimeOptions($('hourly-end-m'), 60);
@@ -525,9 +564,8 @@ const calState = {
   callback: null
 };
 
-const holCalState = { viewYear: 0, viewMonth: 0 };
-
-const smState = { mode: 'add', editingId: null, date: null };
+const holCalState = { viewYear: 0, viewMonth: 0 }
+; null, date: null };
 
 const bulkState = { jy: 0, jm: 0, dirty: false };
 
@@ -560,7 +598,7 @@ function bulkDayStatus(date) {
   const dayLeaves = leavesOnDay(date);
   let dailyLeave = null;
   let hourlyLeaveHours = 0;
-  for (let k = 0; k < dayLeaves.length; k++) {
+-m"' + dis + '>' + bulkMinutesOptions(inM) + '  for (let k = 0; k < dayLeaves.length; k++) {
     if (dayLeaves[k].type === 'daily') dailyLeave = dayLeaves[k];
     else hourlyLeaveHours += dayLeaves[k].hours;
   }
@@ -581,7 +619,8 @@ function bulkSessionHtml(inH, inM, outH, outM, disabled, showRemove) {
     '<div class="time-picker">' +
       '<select class="time-select" data-field="in-h"' + dis + '>' + bulkHoursOptions(inH) + '</select>' +
       '<span class="time-sep">:</span>' +
-      '<select class="time-select" data-field="in-m"' + dis + '>' + bulkMinutesOptions(inM) + '</select>' +
+      '<select class="time-select" data-field="i
+n</select>' +
     '</div>' +
     '<span class="bulk-session-arrow">→</span>' +
     '<div class="time-picker">' +
@@ -639,7 +678,8 @@ function renderBulkMonth() {
       const noteText = leaveInfo.dailyLeave.note
         ? ' — ' + escapeHtml(leaveInfo.dailyLeave.note)
         : '';
-      subLine = '<div class="bulk-note">مرخصی روزانه' + noteText + '</div>';
+      subLine = '<div class="bulk-n
+ote">مرخصی روزانه' + noteText + '</div>';
     } else if (friday) {
       subLine = '<div class="muted small">جمعه</div>';
     } else if (holiday) {
@@ -664,7 +704,8 @@ function renderBulkMonth() {
     } else if (sessions.length === 0) {
       sessionsHtml = bulkSessionHtml('', '', '', '', false, false);
     } else {
-      const showRemove = true;
+.jm--;
+  if (bulkState.jm < 1)      const showRemove = true;
       for (let i = 0; i < sessions.length; i++) {
         sessionsHtml += bulkSessionFromRecord(sessions[i], false, showRemove);
       }
@@ -694,8 +735,8 @@ function handleBulkPrev() {
   if (bulkState.dirty) {
     if (!confirm('تغییرات ذخیره‌نشده از بین می‌رود. ادامه؟')) return;
   }
-  bulkState.jm--;
-  if (bulkState.jm < 1) { bulkState.jm = 12; bulkState.jy--; }
+  bulkStat
+e { bulkState.jm = 12; bulkState.jy--; }
   renderBulkMonth();
 }
 
@@ -762,7 +803,8 @@ function handleBulkAddSession(btn) {
 
   container.querySelectorAll('.bulk-session').forEach(function (el) {
     const rm = el.querySelector('[data-action="remove-session"]');
-    if (!rm) {
+    if (!rm) 
+{
       const spacer = el.querySelector('.bulk-session-spacer');
       if (spacer) {
         spacer.outerHTML = '<button type="button" class="bulk-clear-btn" data-action="remove-session" title="حذف این بازه">×</button>';
@@ -794,7 +836,7 @@ function handleBulkRemoveSession(btn) {
 }
 
 function handleBulkSave() {
-  $('bulk-msg').textContent = '';
+const inH = sessEl.querySelector(  $('bulk-msg').textContent = '';
   $('bulk-err').textContent = '';
 
   const rows = document.querySelectorAll('#bulk-list .bulk-row');
@@ -831,7 +873,8 @@ function handleBulkSave() {
     let hasError = false;
 
     sessionEls.forEach(function (sessEl) {
-      const inH = sessEl.querySelector('[data-field="in-h"]').value;
+     
+ '[data-field="in-h"]').value;
       const inM = sessEl.querySelector('[data-field="in-m"]').value;
       const outH = sessEl.querySelector('[data-field="out-h"]').value;
       const outM = sessEl.querySelector('[data-field="out-m"]').value;
@@ -868,7 +911,7 @@ function handleBulkSave() {
 
     const sorted = newSessions.slice().sort(function (a, b) {
       return new Date(a.in) - new Date(b.in);
-    });
+join('،    });
     for (let i = 1; i < sorted.length; i++) {
       if (new Date(sorted[i].in) < new Date(sorted[i - 1].out)) {
         errors.push(faDateShort(date) + ' (بازه‌ها تداخل دارند)');
@@ -904,7 +947,8 @@ function handleBulkSave() {
     const sub = [];
     if (addedSessions > 0) sub.push(toFaDigits(addedSessions) + ' بازه ثبت');
     if (deletedSessions > 0) sub.push(toFaDigits(deletedSessions) + ' بازه حذف');
-    if (sub.length > 0) parts.push('(' + sub.join('، ') + ')');
+    if (sub.length > 0) parts.push('(' + sub
+. ') + ')');
     $('bulk-msg').textContent = parts.join(' ');
 
     renderBulkMonth();
@@ -947,7 +991,9 @@ async function handleLogin() {
   }
 
   if (/^\d{10}$/.test(password)) {
-    const signUp = await sb.auth.signUp({
+endance();
+  renderLeave();
+  renderSetti    const signUp = await sb.auth.signUp({
       email: email,
       password: password,
       options: {
@@ -1000,9 +1046,8 @@ async function showDashboard() {
 
   updateToday();
   updateClock();
-  renderAttendance();
-  renderLeave();
-  renderSettings();
+  renderAt
+tngs();
   updateDailyPreview();
   updateHourlyPreview();
   initHolidayCalendar();
@@ -1038,7 +1083,13 @@ function switchView(viewName) {
   }
   if (viewName === 'settings') {
     backupMsg.textContent = '';
-    backupErr.textContent = '';
+n;
+  }
+
+  const user = await sb    backupErr.textContent = '';
+  }
+  if (viewName === 'attendance') {
+    renderAttendance();
   }
 }
 
@@ -1082,10 +1133,8 @@ async function handleChangePassword() {
 
   if (newPwd !== confirm) {
     pwdError.textContent = 'رمز جدید و تکرارش یکسان نیستند.';
-    return;
-  }
-
-  const user = await sbCurrentUser();
+    retu
+rCurrentUser();
   if (!user) {
     pwdError.textContent = 'کاربر یافت نشد.';
     return;
@@ -1182,7 +1231,8 @@ async function handleRestoreFile(ev) {
     }
 
     try {
-      if (Array.isArray(data.attendance)) save(KEY_ATTEND, data.attendance);
+      if (Array.isA
+rray(data.attendance)) save(KEY_ATTEND, data.attendance);
       else localStorage.removeItem(KEY_ATTEND);
 
       if (Array.isArray(data.leaves)) save(KEY_LEAVE, data.leaves);
@@ -1278,7 +1328,8 @@ function handleCheckIn() {
 
 function handleCheckOut() {
   const list = getAttendance();
-  const open = openSession(list);
+  const open = openSessio
+n(list);
   if (!open) {
     alert('اول باید ورود بزنید.');
     return;
@@ -1323,17 +1374,80 @@ function sessionRowHtml(s, showDate, dateStr) {
           '</div>';
 }
 
-function renderAttendance() {
+function renderAttTimeline(todays) {
+nce() {
+  const list = getAttendan  if (!attTimelineTrackEl) return;
+
+  const dayMin = 24 * 60;
+  let html = '';
+  let hasSeg = false;
+
+  for (let i = 0; i < todays.length; i++) {
+    const s = todays[i];
+    const inD = new Date(s.in);
+    const startMin = inD.getHours() * 60 + inD.getMinutes();
+    let endMin;
+    let isOpen = false;
+
+    if (s.out) {
+      const outD = new Date(s.out);
+      endMin = outD.getHours() * 60 + outD.getMinutes();
+      if (endMin < startMin) endMin = dayMin;
+    } else {
+      const now = new Date();
+      endMin = now.getHours() * 60 + now.getMinutes();
+      isOpen = true;
+    }
+
+    const leftPct = (startMin / dayMin) * 100;
+    const widthPct = Math.max(0.5, ((endMin - startMin) / dayMin) * 100);
+
+    const cls = 'att-timeline-seg' + (isOpen ? ' is-open' : '');
+    html += '<div class="' + cls + '" style="left:' + leftPct.toFixed(2) + '%;width:' + widthPct.toFixed(2) + '%"></div>';
+    hasSeg = true;
+  }
+
+  if (!hasSeg) {
+    html = '<div class="att-timeline-empty">هنوز رکوردی برای امروز نیست</div>';
+  }
+
+  attTimelineTrackEl.innerHTML = html;
+}
+
+function updateAttTimer() {
+  if (!attTimerEl) return;
   const list = getAttendance();
+  const todays = todaySessionsFrom(list);
+  const ms = todayTotalLiveMs(todays);
+  attTimerEl.textContent = faDurationWithSeconds(ms);
+}
+
+function renderAttend
+ace();
   const open = openSession(list);
   const todays = todaySessionsFrom(list);
 
+  if (attCircleEl) attCircleEl.classList.toggle('is-active', !!open);
+
   if (open) {
-    statusEl.textContent = 'در محل کار — ورود ' + faTimeString(new Date(open.in));
-    statusEl.style.color = 'var(--yellow)';
+    statusEl.textContent = 'در حال کار';
   } else {
     statusEl.textContent = 'خارج از محل کار';
-    statusEl.style.color = '';
+  }
+
+  if (attHintEl) {
+    if (open) {
+      attHintEl.textContent = 'شروع از ' + faTimeString(new Date(open.in));
+    } else if (todays.length > 0) {
+      const last = todays[todays.length - 1];
+      if (last.out) {
+        attHintEl.textContent = 'آخرین خروج ' + faTimeString(new Date(last.out));
+      } else {
+        attHintEl.textContent = 'آماده ثبت';
+      }
+    } else {
+      attHintEl.textContent = 'آماده ثبت';
+    }
   }
 
   btnIn.disabled = !!open;
@@ -1349,9 +1463,18 @@ function renderAttendance() {
     todaySessions.innerHTML = html;
   }
 
-  todayTotalEl.textContent = faDuration(dayTotalMs(todays));
+  const totalMs = dayTotalMs(todays);
+  todayTotalEl.textContent = faDuration(totalMs);
   weekTotalEl.textContent  = faDuration(weekTotalMs(list));
   monthTotalEl.textContent = faDuration(monthTotalMs(list));
+
+  if (attSessionsCountEl) attSessionsCountEl.textContent = toFaDigits(todays.length);
+
+  const remainingMs = Math.max(0, HOURS_PER_DAY * 3600000 - totalMs);
+  if (attRemainingEl) attRemainingEl.textContent = faDuration(remainingMs);
+
+  renderAttTimeline(todays);
+  updateAttTimer();
 
   todaySessions.querySelectorAll('.session-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -1387,7 +1510,8 @@ function openSessionModal(mode, editingId) {
       setTimePicker('sm-out', 16, 40);
     }
     smTitle.textContent = 'ویرایش رکورد';
-  } else {
+  } else 
+{
     const now = new Date();
     smState.date = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     setTimePicker('sm-in', 8, 0);
@@ -1436,7 +1560,7 @@ function handleSessionSave() {
     let found = null;
     for (let i = 0; i < list.length; i++) {
       if (list[i].id === smState.editingId) { found = list[i]; break; }
-    }
+    }    }
     if (!found) {
       smError.textContent = 'رکورد یافت نشد.';
       return;
@@ -1492,8 +1616,9 @@ function leavesOnDay(date) {
       const to = new Date(rec.to);
       to.setHours(0, 0, 0, 0);
       if (d >= from && d <= to) result.push(rec);
-    } else {
-      if (localDateKey(new Date(rec.date)) === key) result.push(rec);
+ else {
+  if (hours > remaining) {
+    dailyError.textContent = 'بیشتر از مان      if (localDateKey(new Date(rec.date)) === key) result.push(rec);
     }
   }
   return result;
@@ -1539,11 +1664,12 @@ function handleAddDaily() {
   }
   const hours = days * HOURS_PER_DAY;
   const remaining = LEAVE_YEAR_TOTAL_HOURS - leaveHoursInYear(getLeaves());
-  if (hours > remaining) {
-    dailyError.textContent = 'بیشتر از مانده است. مانده فعلی: ' + formatHoursAsDays(remaining);
+ده است. مانده فعلی: ' + formatHoursAsDays(remaining);
     return;
   }
-  const list = getLeaves();
+.trim()
+  });
+  saveLeaves(  const list = getLeaves();
   list.push({
     id: 'local-' + Date.now(),
     type: 'daily',
@@ -1596,9 +1722,8 @@ function handleAddHourly() {
     start: s,
     end: e,
     hours: hours,
-    note: hourlyNoteInp.value.trim()
-  });
-  saveLeaves(list);
+    note: hourlyNoteInp.valu
+elist);
 
   hourlyDate = null;
   dateDisplay.textContent = 'انتخاب تاریخ';
@@ -1695,7 +1820,8 @@ function initHolidayCalendar() {
 }
 
 function renderHolidayCalendar() {
-  const jy = holCalState.viewYear;
+  const 
+jy = holCalState.viewYear;
   const jm = holCalState.viewMonth;
 
   holCalTitleEl.textContent = PERSIAN_MONTHS[jm - 1] + ' ' + toFaDigits(jy);
@@ -1737,7 +1863,8 @@ function renderHolidayCalendar() {
 
   holCalGridEl.querySelectorAll('.cal-day:not(.other-month)').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      toggleHoliday(parseLocalDateKey(btn.dataset.date));
+        '</div>' +
+              '<button class="session-      toggleHoliday(parseLocalDateKey(btn.dataset.date));
     });
   });
 }
@@ -1791,8 +1918,8 @@ function renderHolidayList() {
     html += '<div class="session-row">' +
               '<div class="session-main">' +
                 '<div class="session-date">' + line + '</div>' +
-              '</div>' +
-              '<button class="session-btn danger" data-id="' + h.id + '">حذف</button>' +
+     
+ btn danger" data-id="' + h.id + '">حذف</button>' +
             '</div>';
   }
   holidayListEl.innerHTML = html;
@@ -1848,7 +1975,7 @@ function computeReportRange() {
     const rec = leaves[i];
     let startD, endD;
     if (rec.type === 'daily') {
-      startD = new Date(rec.from);
+l('.chip[data-range]').forEach(fun      startD = new Date(rec.from);
       endD = new Date(rec.to);
     } else {
       startD = new Date(rec.date);
@@ -1906,7 +2033,8 @@ function buildReportDays(range) {
 }
 
 function updateReportChips() {
-  document.querySelectorAll('.chip[data-range]').forEach(function (c) {
+  document.querySelectorA
+lction (c) {
     c.classList.toggle('active', c.dataset.range === reportChip);
   });
 }
@@ -1957,7 +2085,7 @@ function dayMatchesSearch(day, searchTerm) {
     else text += 'ساعتی ' + lv.start + ' ' + lv.end + ' ';
     if (lv.note) text += lv.note;
     if (text.toLowerCase().indexOf(s) >= 0) return true;
-  }
+s >  }
 
   if (day.holiday) {
     let title = day.friday ? 'جمعه تعطیل' : 'تعطیل';
@@ -2009,7 +2137,8 @@ function renderReports() {
   for (let i = 0; i < days.length; i++) {
     const day = days[i];
     totalMs += day.ms;
-    if (day.ms > 0) workedDays++;
+    if (day.
+m 0) workedDays++;
 
     const hasDailyLeave = day.dailyLeaveHours > 0;
     if (hasDailyLeave) dailyLeaveDays++;
@@ -2054,7 +2183,10 @@ function renderReports() {
   const extras = [];
   if (dailyLeaveDays > 0) extras.push(toFaDigits(dailyLeaveDays) + ' روز مرخصی روزانه');
   if (totalHourlyLeaveHours > 0) extras.push(toFaDigits(Math.round(totalHourlyLeaveHours * 100) / 100) + ' ساعت مرخصی ساعتی');
-  if (extras.length > 0) repDiffEl.textContent += ' — ' + extras.join('، ');
+rMonths();
+  const totals = [];
+
+  for (let i = 0; i < months.length; i++) {  if (extras.length > 0) repDiffEl.textContent += ' — ' + extras.join('، ');
 
   if (days.length > 0) {
     const weeks = days.length / 7;
@@ -2109,10 +2241,8 @@ function renderReportChart(days) {
 function renderReportMonthChart() {
   const list = getAttendance();
   const days = groupByLocalDay(list);
-  const months = getLeaveYearMonths();
-  const totals = [];
-
-  for (let i = 0; i < months.length; i++) {
+  const months = getLeaveYe
+a
     const m = months[i];
     const monthKey = m.jy + '-' + m.jm;
     let ms = 0;
@@ -2169,7 +2299,7 @@ function renderReportYearSummary() {
 
   let dailyLeaveDays = 0;
   let hourlyLeaveHours = 0;
-  for (let i = 0; i < leaves.length; i++) {
+return order.map(function (k) { return grou  for (let i = 0; i < leaves.length; i++) {
     const rec = leaves[i];
     const refDate = rec.type === 'daily' ? new Date(rec.from) : new Date(rec.date);
     if (refDate >= startDate && refDate <= endDate) {
@@ -2209,7 +2339,8 @@ function groupDaysByPersianWeek(days) {
     groups[key].days.push(day);
   }
 
-  return order.map(function (k) { return groups[k]; });
+ 
+ ps[k]; });
 }
 
 function weekRangeLabel(weekStart) {
@@ -2266,7 +2397,7 @@ function renderReportList(days, totalCount) {
             if (lv.type === 'daily') {
               lvText = 'مرخصی روزانه';
               if (lv.note) lvText += ' — ' + escapeHtml(lv.note);
-            } else {
+   lvText = 'مرخصی ر            } else {
               lvText = 'مرخصی ساعتی ' + toFaDigits(lv.start) + ' تا ' + toFaDigits(lv.end);
               if (lv.note) lvText += ' — ' + escapeHtml(lv.note);
             }
@@ -2311,7 +2442,8 @@ function renderReportList(days, totalCount) {
           const lv = day.leaves[k];
           let lvText;
           if (lv.type === 'daily') {
-            lvText = 'مرخصی روزانه';
+        
+ وزانه';
             if (lv.note) lvText += ' — ' + escapeHtml(lv.note);
           } else {
             lvText = 'مرخصی ساعتی ' + toFaDigits(lv.start) + ' تا ' + toFaDigits(lv.end);
@@ -2361,7 +2493,7 @@ function exportReportCSV() {
   if (!range || !range.from) {
     alert('داده‌ای برای خروجی نیست.');
     return;
-  }
+ }  }
 
   const days = buildReportDays(range);
   const lines = [];
@@ -2407,8 +2539,8 @@ function exportReportCSV() {
         } else {
           lines.push(csvRow([dateStr, weekday, lv.start, lv.end, lv.hours, 'مرخصی ساعتی', lv.note || '']));
         }
-      }
-    }
+    
+     }
   }
 
   const csv = '\uFEFF' + lines.join('\n');
@@ -2474,7 +2606,9 @@ function renderCalendar() {
     calSlots.classList.remove('hidden');
     calFromVal.textContent = calState.from ? faDateShort(calState.from) : 'انتخاب';
     calToVal.textContent = calState.to ? faDateShort(calState.to) : 'انتخاب';
-    calSlotFrom.classList.toggle('active', calState.activeSlot === 'from');
+TML = html;
+
+  calGrid.querySelectorAll('.cal-day:not(.other-month)').forEa    calSlotFrom.classList.toggle('active', calState.activeSlot === 'from');
     calSlotTo.classList.toggle('active', calState.activeSlot === 'to');
   } else {
     calSlots.classList.add('hidden');
@@ -2524,9 +2658,8 @@ function renderCalendar() {
     html += '<button type="button" class="cal-day other-month" disabled>' + toFaDigits(i) + '</button>';
   }
 
-  calGrid.innerHTML = html;
-
-  calGrid.querySelectorAll('.cal-day:not(.other-month)').forEach(function (btn) {
+  calGrid.inner
+Hch(function (btn) {
     btn.addEventListener('click', function () {
       handleCalendarPick(parseLocalDateKey(btn.dataset.date));
     });
@@ -2603,7 +2736,10 @@ document.querySelectorAll('.theme-btn').forEach(function (btn) {
 btnLogin.addEventListener('click', handleLogin);
 btnLogout.addEventListener('click', handleLogout);
 btnIn.addEventListener('click', handleCheckIn);
-btnOut.addEventListener('click', handleCheckOut);
+;
+});
+
+btnPickDate.addEventListener('click', funcbtnOut.addEventListener('click', handleCheckOut);
 btnAddDaily.addEventListener('click', handleAddDaily);
 btnAddHourly.addEventListener('click', handleAddHourly);
 btnChangePwd.addEventListener('click', handleChangePassword);
@@ -2657,10 +2793,8 @@ btnPickRange.addEventListener('click', function () {
     rangeDisplay.textContent = faDateShortNoYear(from) + ' تا ' + faDateShortNoYear(to);
     btnPickRange.classList.add('filled');
     updateDailyPreview();
-  });
-});
-
-btnPickDate.addEventListener('click', function () {
+  }
+)tion () {
   openCalendar('single', hourlyDate, null, function (date) {
     hourlyDate = date;
     dateDisplay.textContent = faDateShort(date);
@@ -2762,7 +2896,16 @@ holCalNext.addEventListener('click', function () {
   $(id).addEventListener('change', updateHourlyPreview);
 });
 
-setInterval(updateClock, 1000);
+setInterval(function () {
+  updateClock();
+  if (!pageDashboard.classList.contains('hidden')) {
+    const attView = document.getElementById('view-attendance');
+    if (attView && !attView.classList.contains('hidden')) {
+      updateAttTimer();
+    }
+  }
+}, 1000);
+
 setInterval(function () {
   if (!pageDashboard.classList.contains('hidden')) renderAttendance();
 }, 30000);
