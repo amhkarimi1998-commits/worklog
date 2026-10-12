@@ -1833,3 +1833,371 @@ button:disabled {
 .rep-week-body .session-row:last-child {
   margin-bottom: 0;
 }
+
+/* ===== موبایل: اصلاح چیدمان ===== */@media (max-width: 780px) {
+
+  html, body {
+ grid-template-columns:    overflow-x: hidden;
+  }
+
+  .layout {
+  
+  1fr;
+    min-width: 0;
+  }
+
+  .sidebar {
+    border-left: 0;
+    border-bottom: 1px solid var(--border);
+x;
+    margin-bottom: 12px;    padding: 14px 14px 10px;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .brand {
+    padding: 0 4px 14
+p  }
+
+  .brand-dot {
+    width: 30px;
+    height: 30px;
+  }
+
+  .brand-title {
+    font-size: 15px;
+  }
+
+  .brand-sub {
+    font-size: 11px;
+: 6  }
+
+  .nav {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 6px;
+    padding-botto
+mpx;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .nav::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .nav::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+  }
+
+  .nav-item {
+    flex-shrink: 0;
+    flex-grow: 0
+;
+    white-space: nowrap;
+    padding: 8px 12px;
+    font-size: 13px;
+    border-radius: 8px;
+  }
+
+  .nav-icon {
+    width: 16px;
+    height: 16px;
+%;  }
+
+  .nav-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .sidebar-footer {
+    display: none;
+  }
+
+  .main {
+    min-width: 0;
+    width: 10
+0  }
+
+  .topbar {
+    padding: 12px 14px;
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  .topbar h2 {
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .    text-overflow: ellipsis;
+  }
+
+  #clock-date {
+    font-size: 11px;
+  }
+
+  #clock-time {
+    font-size: 15px;
+    letter-spacing: 0;
+  }
+
+  .clock {
+    margin: 0;
+content {
+    padding: 12px;
+ .card-head h3 {
+       max-width: 100%;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .card {
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+
+  .card-head {
+    margin-bottom: 10px;
+  }
+
+  font-size: 14px;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .summary-grid.summary-grid-3 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .summary-grid.summary-grid-4 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .summary-card {
+    padding: 14px 10px;
+  }
+
+  .summary-label {
+    font-size: 12px;
+  }
+
+  .summary-value {
+    font-size: 18px;
+  }
+
+  .session-row {
+    padding: 10px 12px;
+    font-size: 13px;
+    gap: 8px;
+  }
+
+  
+.session-row .duration {
+    font-size: 13px;
+  }
+
+  .session-actions {
+    gap: 4px;
+  }
+
+  .session-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .rep-filter-row {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .rep-date-btn {
+id-template-columns    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .rep-filter-spacer {
+    display: none;
+  }
+
+  .rep-stats-head {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .rep-big-value {
+    font-size: 30px;
+  }
+
+  .rep-minis {
+    g
+r: 1fr 1fr 1fr;
+    min-width: 0;
+    width: 100%;
+    gap: 6px;
+  }
+
+  .rep-mini {
+    padding: 8px 4px;
+  }
+
+  .rep-mini-label {
+    font-size: 10px;
+  }
+
+  .rep-mini-value {
+    font-size: 13px;
+  }
+
+  .rep-tabs {
+    gap: 4px;
+    padding: 3px;
+  }
+
+  .rep-tab {
+ }
+
+  .ys-item {
+    p    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .chart {
+    height: 170px;
+    padding-top: 10px;
+  }
+
+  .chart-col {
+    flex: 1 0 18px;
+  }
+
+  .chart-col-month {
+    flex: 1 0 40px;
+  }
+
+  .year-summary-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+ adding: 10px;
+  }
+
+  .ys-item b {
+
+  }
+
+  .bulk-list-h    font-size: 14px;
+  }
+
+  .rep-week-head {
+    padding: 10px 12px;
+    gap: 6px;
+  }
+
+  .rep-week-title {
+    font-size: 13px;
+  }
+
+  .rep-week-meta {
+    display: none;
+  }
+
+  .rep-week-total {
+    font-size: 13px;
+  }
+
+  .bulk-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 10px
+;ead {
+    display: none;
+  }
+
+  .bulk-actions {
+    gap: 6px;
+  }
+
+  .bulk-actions .btn-primary {
+    width: 100%;
+    margin: 0;
+  }
+
+  .bulk-controls {
+    gap: 6px;
+  }
+
+  #bulk-month-title {
+    font-size: 14px;
+  }
+
+  .form-row.two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .tabs {
+    padding: 3px;
+  }
+
+  .tab {
+x-width: 100%;
+  }
+
+      padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .actions {
+    gap: 8px;
+  }
+
+  .actions .btn-primary,
+  .actions .btn-danger {
+    flex: 1;
+  }
+
+  .date-picker-btn {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .time-select {
+    font-size: 16px;
+    min-width: 44px;
+  }
+
+  .calendar {
+    padding: 14px;
+    m
+a.calendar-head button {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  #cal-title,
+  #hol-cal-title {
+    font-size: 14px;
+  }
+
+  .cal-day {
+    padding: 8px 0;
+    font-size: 13px;
+  }
+
+  .modal-content {
+    padding: 18px;
+  }
+
+  .modal-actions button {
+    flex: 1;
+  }
+}
